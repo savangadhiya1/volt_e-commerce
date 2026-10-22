@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volt | Plug Into Premium Audio</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        /* Toast notification for Add To Cart */
+        .toast-notify {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #121212;
+            color: #fff;
+            border: 1px solid #ff4747;
+            padding: 14px 28px;
+            border-radius: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+            font-size: 14px;
+            font-weight: 600;
+            z-index: 100000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .toast-notify.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-offer-bar">
+    <p id="offer-bar-text">⚡ FLASH SALE: Premium Volt Audio gear up to 60% off! ⚡</p>
+</div>
+
+<header class="site-header">
+    <div class="navbar-container">
+        <!-- Logo -->
+        <a href="index.html" class="logo">volt</a>
+        
+        <!-- Navigation Strip Links Running Horizontally -->
+        <nav class="nav-links">
+            <a href="index.html">🏠 Home</a>
+
+            <div class="dropdown">
+                <span class="drop-btn">Categories ▾</span>
+                <div class="dropdown-content">
+                    <a href="index.html?category=1">Smartwatches</a>
+                    <a href="index.html?category=2">Headphones</a>
+                    <a href="index.html?category=3">Neckbands</a>
+                    <a href="index.html?category=4">Earbuds</a>
+                    <a href="index.html?category=5">Speakers</a>
+                </div>
+            </div>
+
+            <!-- Gifting Store Link -->
+            <a href="gifting_store.html">🎁 Gifting Store</a>
+
+            <div class="dropdown">
+                <span class="drop-btn">More ▾</span>
+                <div class="dropdown-content">
+                    <a href="#about-us">ℹ️ About Us</a>
+                    <a href="#contact-us">📞 Contact Us</a>
+                    <a href="#location">📍 Location</a>
+                    <a href="admin_login.html">⚡ Admin Portal</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Search input box area -->
+        <div class="search-box">
+            <form class="volt-search-form">
+                <input type="text" name="search" id="searchInput" placeholder='Search "Speakers", "Headphones"...'>
+            </form>
+        </div>
+
+        <!-- Action Grid Icons -->
+        <div class="action-items">
+            <!-- 👤 Dropdown Profile Menu -->
+            <div class="dropdown profile-dropdown">
+                <span class="drop-btn">👤 Profile</span>
+                <div class="dropdown-content right-align">
+                    <div id="user-status-slot">
+                        <a href="login.html" class="btn" style="margin-right: 10px; background: #ff4747; color: #fff;">👤 User Login</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 🛒 Clean Cart Action Wrapper -->
+            <div class="header-user-actions">
+                <a href="cart.html" class="cart-anchor-box" title="View Storage Matrix Cart">
+                    <img class="cart-icon-img" src="assets/images/cart-icon.png" onerror="this.src='https://cdn-icons-png.flaticon.com/512/1170/1170678.png'" alt="Cart Grid View">
+                    <span class="cart-count-badge" style="display: none;">0</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+    <section class="category-pills-row">
+        <a href="index.html" class="pill-btn" id="pill-all">⚡ All Gear</a>
+        <a href="index.html?category=1" class="pill-btn" id="pill-1">⌚ Smartwatches</a>
+        <a href="index.html?category=2" class="pill-btn" id="pill-2">🎧 Headphones</a>
+        <a href="index.html?category=3" class="pill-btn" id="pill-3">📶 Neckbands</a>
+        <a href="index.html?category=4" class="pill-btn" id="pill-4">🎵 Earbuds</a>
+        <a href="index.html?category=5" class="pill-btn" id="pill-5">🔊 Speakers</a>
+    </section>
+
+    <div class="filter-ribbon">
+        <h2 class="section-title" id="sectionTitle">Trending Storefront</h2>
+    </div>
+
+    <div class="product-grid" id="productGrid">
+        <!-- Rendered dynamically by JavaScript via VoltDB -->
+    </div>
+</main>
+
+<!-- ================= START VOLT FOOTER INFO SECTION ================= -->
+<section class="volt-info-section">
+    <div class="volt-info-container">
+        
+        <!-- 1. About Us -->
+        <div class="info-box" id="about-us">
+            <h3>⚡ ABOUT VOLT</h3>
+            <p>Volt is a next-generation audio and smart gadgets brand. We deliver premium quality headphones, wireless earbuds, smartwatches, and speakers built with futuristic design elements and exceptional sound engineering.</p>
+            <p>Our mission is to provide high-end technology accessible to everyone.</p>
+        </div>
+
+        <!-- 2. Contact Us -->
+        <div class="info-box" id="contact-us">
+            <h3>📞 CONTACT HUB</h3>
+            <p>Reach out to our support matrix for any inquiries or assistance:</p>
+            <ul>
+                <li><strong>📧 Email:</strong> support@voltgear.com</li>
+                <li><strong>📞 Hotline:</strong> +91 98765 43210</li>
+                <li><strong>⏰ Hours:</strong> Mon - Sat: 10:00 AM - 7:00 PM</li>
+            </ul>
+        </div>
+
+        <!-- 3. Location -->
+        <div class="info-box" id="location">
+            <h3>📍 LIVE MATRIX LOCATION</h3>
+            <p>Our primary R&D and distribution hub:</p>
+            <div class="map-responsive">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59049.77126131375!2d70.74836643261763!3d22.292723652156824!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3959c98ac91ccfb5%3A0xc34cf05c2a125348!2sRajkot%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Copyright Footer -->
+<footer class="site-footer-bottom">
+    <div class="container">
+        <p>&copy; 2026 VOLT Gear India. All rights reserved. Matrix ID: VLT-IN-HYBRID-734.</p>
+    </div>
+</footer>
+
+<!-- Toast notification element -->
+<div id="toastNotification" class="toast-notify">
+    <span>⚡</span>
+    <span id="toastMsg">Added to cart successfully!</span>
+</div>
+
+<!-- Database & Common Component Scripts -->
+<script src="assets/js/db.js"></script>
+<script src="assets/js/common.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Parse URL params
+        const urlParams = new URLSearchParams(window.location.search);
+        const categoryId = parseInt(urlParams.get('category')) || 0;
+        const searchQuery = urlParams.get('search') || '';
+
+        // Update active category pill
+        if (categoryId > 0) {
+            const activePill = document.getElementById(`pill-${categoryId}`);
+            if (activePill) activePill.classList.add('active');
+        } else {
+            document.getElementById('pill-all').classList.add('active');
+        }
+
+        // Set search input value if search active
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput && searchQuery) {
+            searchInput.value = searchQuery;
+            document.getElementById('sectionTitle').textContent = `Search Results for "${searchQuery}"`;
+        }
+
+        // Fetch products from VoltDB
+        const products = window.VoltDB.getProducts(categoryId, searchQuery);
+        const grid = document.getElementById('productGrid');
+
+        if (!products || products.length === 0) {
+            grid.innerHTML = `
+                <div class="no-products-box">
+                    <p style="font-size: 18px; color: #666; margin-bottom: 10px;">🔍 No matching products found.</p>
+                    <a href="index.html" class="pill-btn active" style="display:inline-block; margin-top: 15px;">View All Gear</a>
+                </div>
+            `;
+            return;
+        }
+
+        grid.innerHTML = products.map(product => {
+            const imgSrc = (product.image.startsWith('http')) 
+                ? product.image 
+                : `assets/images/${product.image}`;
+            
+            const price = Number(product.price).toLocaleString();
+            const originalPrice = Number(product.original_price).toLocaleString();
+
+            return `
+                <div class="product-card">
+                    <div class="img-wrap">
+                        <img src="${imgSrc}" onerror="this.src='https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500'" alt="${product.name}">
+                    </div>
+                    
+                    <div class="card-details">
+                        <div class="rating-bar" style="font-size: 13px; color: #bbb; margin-bottom: 8px;">
+                            <span style="color: gold;">⭐ ${product.avg_rating}</span> | 
+                            <span style="color: #4CAF50; font-weight: bold;">🛒 ${product.total_sold} Sold</span>
+                        </div>
+                        
+                        <h3>${product.name}</h3>
+                        
+                        <div class="price-row">
+                            <span class="current-price">₹${price}</span>
+                            <span class="old-price">₹${originalPrice}</span>
+                            <span class="discount-tag">${product.discount}</span>
+                        </div>
+                        
+                        <div class="button-group">
+                            <a href="product_detail.html?id=${product.id}" class="btn btn-view-details">View Details</a>
+                            <button class="btn btn-add-cart" onclick="quickAddToCart(${product.id}, '${product.name.replace(/'/g, "\\'")}')">Add To Cart</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }).join('');
+    });
+
+    function showToast(message) {
+        const toast = document.getElementById('toastNotification');
+        const msg = document.getElementById('toastMsg');
+        msg.textContent = message;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2600);
+    }
+
+    function quickAddToCart(productId, productName) {
+        window.VoltDB.addToCart(productId, 1);
+        showToast(`⚡ ${productName} added to cart!`);
+    }
+</script>
+</body>
+</html>
